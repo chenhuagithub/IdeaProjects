@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+
+    <!-- 扫描 -->
+    <context:component-scan base-package="com.atguitu"></context:component-scan>
+
+
+    <!-- 开启基于注解的aop功能；aop名称空间 -->
+<!--    <aop:aspectj-autoproxy proxy-target-class="true"></aop:aspectj-autoproxy>-->
+
+    <!--
+        使用aop的步骤
+        1. 导包
+        2. 写配置
+            1) 将目标类和切面类(封装了通知方法(在目标方法执行前后执行的方法))加入到ioc容器中
+            2) 还应该告诉Spring到底哪个是切面类(@Aspect)
+            3) 开启基于注解的aop模式
+    -->
+
+
+    <!--
+        切入点表达式写法:
+        固定格式: execution(访问权限符 返回类型 方法全类名(参数表))
+        通配符:
+            *:
+            1)匹配一个或者多个字符
+            2)匹配任意参数, 第一个是int类型, 第二个参数任意类型(匹配两个参数)
+                @AfterReturning("execution(public Integer com.atguitu.Imp.MyMathCalculator.*(int, *))")
+            3)只能匹配一层路径
+                @AfterReturning("execution(public Integer com.*.Imp.MyMathCalculator.*(int, int))")
+            4)权限位置*号不能写, 权限位置不写就行
+                          @AfterReturning("execution(* com.atguitu.Imp.MyMathCalculator.*(int, int))")
+
+
+            ..:
+              1)匹配任意多个参数, 任意类型参数
+              @AfterReturning("execution(public Integer com.atguitu.Imp.MyMathCalculator.*(..))")
+              2)匹配任意多层路径
+                @AfterReturning("execution(public Integer com..MyMathCalculator.*(int, int))")
+
+            &&:
+                同时满足多个表达式
+                              @AfterReturning("execution(* *.*(int, int))&&@execution(* *.*(int, float))")
+
+            ||:
+               满足任意表达式即可
+                    @AfterReturning("execution(* *.*(int, int))||@execution(* *.*(int, float))")
+
+            !:
+              只要不是这个位置切入
+              @AfterReturning("!execution(* *.*(int, int))")
+
+    -->
+
+    <!-- 基于配置的aop -->
+    <bean id="myMathCalculator" class="com.atguitu.Imp.MyMathCalculator"></bean>
+    <bean id="logUtils" class="com.atguitu.utils.LogUtils"></bean>
+
+    <!-- 需要aop名称空间 -->
+    <!-- proxy-target-class="true": 使用clib代理 -->
+    <aop:config proxy-target-class="true">
+        <!-- 指定切面 -->
+        <aop:aspect ref="logUtils">
+            <aop:pointcut id="mypoint" expression="execution(* com.atguitu.Imp.MyMathCalculator.*(..))"/>
+            <!-- 配置通知 -->
+            <aop:before method="logStart" pointcut-ref="mypoint"></aop:before>
+            <aop:after-returning method="logReturn" pointcut-ref="mypoint" returning="result"></aop:after-returning>
+            <aop:after-throwing method="logException" pointcut-ref="mypoint" throwing="ex"></aop:after-throwing>
+            <aop:after method="logEnd" pointcut-ref="mypoint"></aop:after>
+        </aop:aspect>
+    </aop:config>
+
+</beans>

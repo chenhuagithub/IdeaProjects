@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="sheep" class="com.atguitu.bean.Sheep" scope="prototype">
+        <property name="name" value="羊"></property>
+        <property name="age" value="12"></property>
+        <property name="color" value="白色"></property>
+    </bean>
+
+    <!-- services -->
+    <bean id="animal" class="com.atguitu.bean.Animal">
+        <property name="name" value="哈士奇"></property>
+    </bean>
+
+    <bean id="person" class="com.atguitu.bean.Person">
+        <property name="lastName" value="张三"></property>
+        <property name="age" value="23"></property>
+        <property name="gender" value="男"></property>
+        <property name="email" value="736527@qq.com"></property>
+    </bean>
+
+    <bean id="person2" class="com.atguitu.bean.Person">
+        <property name="lastName" value="李四"></property>
+    </bean>
+
+    <!--  使用有参构造器创建对象  -->
+    <bean id="person3" class="com.atguitu.bean.Person">
+        <constructor-arg name="lastName" value="赵云"></constructor-arg>
+        <constructor-arg name="age" value="11"></constructor-arg>
+        <constructor-arg name="gender" value="男"></constructor-arg>
+        <constructor-arg name="email" value="1265436@qq.com"></constructor-arg>
+    </bean>
+
+    <bean id="person4" class="com.atguitu.bean.Person"
+          p:lastName="关羽" p:age="143" p:email="74398@qq.com" p:gender="男"></bean>
+
+</beans>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.atguigu.dao.EmployeeMapper">
+
+    <resultMap id="emMap" type="com.atguigu.bean.Employee">
+        <id property="id" column="id"></id>
+        <result property="lastName" column="lastName"></result>
+        <result property="email" column="email"></result>
+        <result property="gender" column="gender"></result>
+        <association property="department" select="com.atguigu.dao.DepartmentMapper.findOneDepartment" column="did"></association>
+    </resultMap>
+
+
+    <select id="findOneEmployee" resultMap="emMap">
+        select * from employee
+        <where>
+            id=#{id}
+        </where>
+    </select>
+
+
+    <select id="findAllEmployee" resultMap="emMap">
+        select * from employee
+    </select>
+
+    <insert id="addEmployee" useGeneratedKeys="true" keyProperty="id">
+        insert into
+            employee(lastName, email, gender)
+        values
+            (#{lastName}, #{email}, #{gender});
+
+    </insert>
+
+    <update id="addDid">
+        update employee set did=#{did} where id=#{id};
+    </update>
+
+    <delete id="deleteEmployee">
+        delete from employee where id=#{id};
+    </delete>
+
+
+    <update id="updateEmployee">
+        update employee set lastName=#{lastName}, email=#{email},gender=#{gender} where id=#{id};
+    </update>
+
+</mapper>

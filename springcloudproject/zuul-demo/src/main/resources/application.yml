@@ -1,0 +1,46 @@
+server:
+  port: 8087
+
+# 配置路由规则
+#zuul:
+#  routes:
+#    zuul-demo:
+#      path: /user-service/**
+#      url: http://localhost:8081
+
+spring:
+  application:
+    name: zuul-service
+
+eureka:
+  client:
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://localhost:8083/eureka/
+zuul:
+#  prefix: /api
+  routes:
+    zuul-demo:
+      path: /user-service/**
+      serviceId: user-service
+#      strip-prefix: false
+
+
+#zuul:
+#  routes:
+#    user-service: /user-service/**
+#  ignored-services:
+#    - consumer-server
+#  prefix: /api
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 6000
+
+ribbon:
+  ConnectionTimeOut: 500
+  ReadTimeOut: 2000

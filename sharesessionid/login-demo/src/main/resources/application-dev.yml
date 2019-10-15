@@ -1,0 +1,29 @@
+server:
+  port: 8002
+
+
+spring:
+  application:
+    name: login-demo
+
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/chenhua?useUnicode=true&characterEncoding=UTF-8
+    username: root
+    password: 123456
+  redis:
+    host: localhost
+mybatis-plus:
+  config-location: classpath:mybatis/mybatis-config.xml
+  mapper-locations: mybatis/mapper/*.xml
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://localhost:8001/eureka/
+
+
+session:
+  redis:
+    expireTime: 120000

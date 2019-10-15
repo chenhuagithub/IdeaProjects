@@ -1,0 +1,29 @@
+# 配置端口号
+#server:
+#  port: 8083
+
+# 配置服务名称
+spring:
+  cloud:
+    config:
+      uri: http://localhost:8888
+      name: application
+      label: master
+      profile: prod
+
+## 注册服务中心
+#eureka:
+#  instance:
+#    #主机ip
+#    hostname: localhost
+#  client:
+#    # 表示是否将自己注册到Eureka Servier上, 默认为false
+#    register-with-eureka: true
+##    # 表示是否从Eureka Server上获取注册信息, 默认为true
+#    fetch-registry: true
+#    # 注册地址
+#    service-url:
+#      defaultZone: http://localhost:8084/eureka/
+#  server:
+#    # eureka发现客户端挂了之后, 并不会立刻销毁该客户端, 而是会保留一段时间, 默认为60s
+##    eviction-interval-timer-in-ms: 60

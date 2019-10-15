@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop
+        https://www.springframework.org/schema/aop/spring-aop.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+
+    <!-- 注解扫描 -->
+    <context:component-scan base-package="com.atguigu">
+        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+        <context:exclude-filter type="annotation" expression="org.springframework.web.bind.annotation.ControllerAdvice"/>
+    </context:component-scan>
+
+    <!-- 引入外界文件 -->
+    <context:property-placeholder location="classpath:dbconfig.properties"></context:property-placeholder>
+
+
+    <!-- 数据源配置 -->
+    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+        <property name="user" value="${jdbc.user}"></property>
+        <property name="password" value="${jdbc.password}"></property>
+        <property name="jdbcUrl" value="${jdbc.jdbcUrl}"></property>
+        <property name="driverClass" value="${jdbc.driverClass}"></property>
+    </bean>
+
+    <!-- 配置mybatis操作数据库 -->
+    <bean class="org.mybatis.spring.SqlSessionFactoryBean">
+        <!-- 指定mybatis全局配置文件的位置 -->
+        <property name="configLocation" value="classpath:mybatis/mybatis-config.xml"></property>
+        <property name="dataSource" ref="dataSource"></property>
+    </bean>
+
+    <!-- 把dao中的所有接口加入到ioc容器 -->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.atguigu.dao"></property>
+    </bean>
+
+
+    <!-- 配置事务管理器 -->
+    <bean class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"></property>
+    </bean>
+
+    <import resource="classpath:shiro.xml"></import>
+
+<!--    <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">-->
+<!--        <property name="cacheManager" ref="cacheManager"></property>-->
+<!--        <property name="realm" ref="jdbcRealm"></property>-->
+<!--    </bean>-->
+
+<!--    <bean id="cacheManager" class="org.apache.shiro.cache.ehcache.EhCacheManager">-->
+<!--        <property name="cacheManagerConfigFile" value="classpath:ehcache.xml"></property>-->
+<!--    </bean>-->
+
+<!--    <bean id="jdbcRealm" class="com.atguigu.Utils.ShiroRealm"></bean>-->
+
+<!--    <bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor"></bean>-->
+
+<!--    <bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator" depends-on="lifecycleBeanPostProcessor"></bean>-->
+
+<!--    <bean class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">-->
+<!--        <property name="securityManager" ref="securityManager"></property>-->
+<!--    </bean>-->
+
+<!--    <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">-->
+<!--        <property name="securityManager" ref="securityManager"></property>-->
+<!--        <property name="loginUrl" value="/login.jsp"></property>-->
+<!--        <property name="successUrl" value="/list.jsp"></property>-->
+<!--        <property name="unauthorizedUrl" value="/unauthorized.jsp"></property>-->
+
+<!--        <property name="filterChainDefinitions">-->
+<!--            <value>-->
+<!--                /login.jsp = anon-->
+
+<!--                /** = authc-->
+<!--            </value>-->
+<!--        </property>-->
+<!--    </bean>-->
+
+</beans>

@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: hello-spring-cloud-config
+  cloud:
+    config:
+      # 拉取哪个分支
+      label: master
+      server:
+        git:
+          uri: https://github.com/chenhuagithub/microservicecloud-config.git
+          search-paths: respo
+
+
+server:
+  port: 8888
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8083/eureka/

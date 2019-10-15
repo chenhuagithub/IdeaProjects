@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.atguigu.logindemo.dao.AuthorizationMapper">
+
+    <resultMap id="AuthorizationMap" type="com.atguigu.logindemo.bean.Authorization">
+        <id column="id" property="id"></id>
+        <result column="permissionsid" property="permissionsid"></result>
+        <result column="userid" property="userid"></result>
+        <result column="username" property="user.username"></result>
+        <result column="role" property="permissions.role"></result>
+    </resultMap>
+
+    <select id="findPerms" resultMap="AuthorizationMap">
+        select user.username, permissions.role from authorization, user, permissions where userid = user.id and permissionsid=permissions.id and user.username=#{username};
+    </select>
+</mapper>

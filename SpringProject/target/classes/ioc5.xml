@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+
+    <!--
+        使用注解的几个步骤:
+            1. 给添加的组件上标四个注解的任何一个
+            2. 告诉spring, 自动扫描加了注解的组件, 依赖context名称空间
+            3. 一定要导入aop包, 支持加注解模式
+    -->
+
+<!--    <context:component-scan base-package="com.atguitu">-->
+<!--        &lt;!&ndash;-->
+<!--            type="annotation", 指定陪出规则, 按照注解进行排除. 标注了指定注解的组件不要-->
+<!--            type="assignable", 指定排除某个具体的类, 按照类排除-->
+<!--            expression="", 注解的全类名-->
+<!--        &ndash;&gt;-->
+<!--        &lt;!&ndash; <context:exclude-filter type="assignable" expression="org.springframework.stereotype.Repository"/>&ndash;&gt;-->
+<!--        <context:exclude-filter type="assignable" expression="com.atguitu.dao.BookDao"/>-->
+<!--    </context:component-scan>-->
+    
+
+    <!-- use-default-filters: 是否开启默认扫描器 -->
+<!--    <context:component-scan base-package="com.atguitu" use-default-filters="false">-->
+<!--&lt;!&ndash;     <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>&ndash;&gt;-->
+<!--        <context:include-filter type="assignable" expression="com.atguitu.controller.BookController"/>-->
+<!--    </context:component-scan>-->
+
+    <context:component-scan base-package="com.atguitu"></context:component-scan>
+
+
+<!--
+    1)先按照类型去容器中找到对应的组件, bookService = ioc.getBean(BookService.class)
+        a. 找到一个, 找到就赋值
+        b. 没找到, 抛异常
+        c. 找到多个
+            1. 按照变量名(private BookService bookService)作为id继续匹配
+
+
+-->
+
+</beans>

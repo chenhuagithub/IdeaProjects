@@ -1,0 +1,14 @@
+
+
+spring:
+  application:
+    name: aaa
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/chenhuagithub/microservicecloud-config.git
+          search-paths: config-repo
+#          force-pull: true
+server:
+  port: 3344

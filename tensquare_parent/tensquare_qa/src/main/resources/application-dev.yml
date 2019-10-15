@@ -1,0 +1,35 @@
+server:
+  port: 8003
+
+
+spring:
+  application:
+    name: tensquare-qa
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:13306/tensquare_qa?useUnicode=true&characterEncoding=UTF-8
+    username: root
+    password: 123456
+
+
+#mybatis:
+#  # 指定全局配置文件的位置
+#  config-location: classpath:mybatis/mybatis-config.xml
+#  # 指定映射文件的位置
+#  mapper-locations: mybatis/mapper/*.xml
+mybatis-plus:
+  config-location: classpath:mybatis/mybatis-config.xml
+  mapper-locations: mybatis/mapper/*.xml
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://localhost:6868/eureka/
+
+  instance:
+    prefer-ip-address: true
+# 开启熔断器
+feign:
+  hystrix:
+    enabled: true

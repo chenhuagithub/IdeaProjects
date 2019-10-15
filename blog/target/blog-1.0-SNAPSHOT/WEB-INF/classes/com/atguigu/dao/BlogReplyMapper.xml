@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.atguigu.dao.BlogReplyMapper">
+
+    <resultMap id="blogReplyMap" type="com.atguigu.bean.BlogReply">
+        <id property="id" column="id"></id>
+        <result property="responderId" column="responderId"></result>
+        <result property="beresponderId" column="beresponderId"></result>
+        <result property="commentId" column="commentId"></result>
+        <result property="content" column="content"></result>
+        <result property="Responder.id" column="reId"></result>
+        <result property="Responder.userName" column="responder"></result>
+        <result property="Responder.imageName" column="responderImageName"></result>
+        <result property="BeResponder.id" column="bereId"></result>
+        <result property="BeResponder.userName" column="beresponder"></result>
+        <result property="BeResponder.imageName" column="beresponderImageName"></result>
+    </resultMap>
+
+    <insert id="addBlogReply">
+        insert into
+            t_reply(responderId, beresponderId, commentId, content)
+        values
+            (#{responderId}, #{beresponderId}, #{commentId}, #{content})
+    </insert>
+
+<!--    <select id="findBlogReply" resultMap="blogReplyMap">-->
+<!--        select * from t_reply where commentId=#{commentId} order by replyTime asc;-->
+<!--    </select>-->
+
+    <select id="findBlogReply" resultMap="blogReplyMap">
+        select t1.id, t1.responderId, t1.beresponderId, t1.commentId,t2.id reId, t2.userName responder, t2.imageName responderImageName, t3.id bereId, t3.userName beresponder, t3.imageName beresponderImageName, t1.commentId, t1.content, t1.replyTime from t_reply t1 left join t_blogger t2 on t1.responderId=t2.id left join t_blogger t3 on t1.beresponderId=t3.id where t1.commentId=#{commentId} order by replyTime asc;
+    </select>
+
+</mapper>

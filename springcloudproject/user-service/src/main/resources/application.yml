@@ -1,0 +1,34 @@
+server:
+  port: 8081
+
+spring:
+  datasource:
+    username: root
+    password: 123456
+    url: jdbc:mysql://localhost:3306/jdbc?useUnicode=true&characterEncoding=UTF-8
+    driver-class-name: com.mysql.jdbc.Driver
+  application:
+    name: user-service
+
+
+
+# 注册服务中心
+eureka:
+#  instance:
+#    #主机ip
+#    hostname: localhost
+  client:
+    # 表示是否将自己注册到Eureka Servier上, 默认为false
+    register-with-eureka: true
+    # 表示是否从Eureka Server上获取注册信息, 默认为true
+    fetch-registry: true
+    # 注册地址
+    service-url:
+      defaultZone: http://localhost:8083/eureka/,http://localhost:8084/eureka/
+  instance:
+    # 服务续约, 即客户端多少时间向eureka注册中心发送心跳
+    lease-renewal-interval-in-seconds: 30
+    # 过期时间, 即如果Eureka客户端90秒没有回应, 则Eureka认为该客户端已经挂了
+    lease-expiration-duration-in-seconds: 90
+
+

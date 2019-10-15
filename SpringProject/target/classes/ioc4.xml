@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+
+    <bean id="car" class="com.atguitu.bean.Car">
+        <property name="carName" value="宝马"></property>
+        <property name="price" value="346"></property>
+        <property name="color" value="红色"></property>
+    </bean>
+
+<!--    <bean id="car2" class="com.atguitu.bean.Car">-->
+<!--        <property name="carName" value="泰迪"></property>-->
+<!--        <property name="price" value="23"></property>-->
+<!--        <property name="color" value="绿色"></property>-->
+<!--    </bean>-->
+
+    <bean id="book1" class="com.atguitu.bean.Book">
+        <property name="bookName" value="book1"></property>
+    </bean>
+    <bean id="book2" class="com.atguitu.bean.Book">
+        <property name="bookName" value="book2"></property>
+    </bean>
+    <bean id="book3" class="com.atguitu.bean.Book">
+        <property name="bookName" value="book3"></property>
+    </bean>
+
+    <!--
+        自动装配: autowire属性
+            autowire="default/no"  ===关闭自动装配(默认值)
+            autowire="byName"
+                以属性名作为id去容器中找到这个组件, 给它赋值；如果哦找不到就装配null
+            autowire=byType
+                以属性的类型作为查找依据去容器中去找到这个组件, 如果容器中有多个这个类型的组件, 报错,
+                没找到, 装配null
+            autowire=constructor
+                按照构造器进行赋值:
+                    1)先按照有参构造器参数的类型进行装配(成功就装配), 没有就直接为组件装配null即可.
+                    2)如果按照类型找到了多个, 参数的名作为id继续匹配；找到就装配, 找不到就null.
+                    3)不会报错
+    -->
+
+<!--    <bean id="person" class="com.atguitu.bean.Person" autowire="byType">-->
+
+<!--    </bean>-->
+
+
+
+
+
+
+</beans>

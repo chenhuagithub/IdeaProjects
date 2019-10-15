@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.atguigu.dao.DepartmentMapper">
+    <resultMap id="dep" type="com.atguigu.bean.Department">
+        <id column="id" property="id"></id>
+        <result column="dept_name" property="departmentName"></result>
+    </resultMap>
+    <select id="getById" resultMap="dep">
+    select * from tbl_dept where id = #{id};
+  </select>
+
+    <resultMap id="dep2" type="com.atguigu.bean.Department">
+        <id column="id" property="id"></id>
+        <result column="dept_name" property="departmentName"></result>
+    </resultMap>
+
+    <select id="getById2" resultMap="dep2">
+        select * from tbl_dept where id=#{id};
+    </select>
+
+
+    <resultMap id="oneToMore" type="com.atguigu.bean.Department">
+        <id column="did" property="id"></id>
+        <result column="dept_name" property="departmentName"></result>
+        <!--
+            collection: 定义关联集合类型的属性的封装规则
+            ofType: 指定集合类型里面元素的类型
+        -->
+        <collection property="employees" ofType="com.atguigu.bean.Employee">
+            <!-- 定义集合中的封装规则 -->
+            <id column="eid" property="id"></id>
+            <result column="last_name" property="lastName"></result>
+            <result column="gender" property="gender"></result>
+            <result column="email" property="email"></result>
+        </collection>
+    </resultMap>
+
+    <select id="getByIdPlus" resultMap="oneToMore">
+        select
+            d.id did, d.dept_name dept_name,e.id eid,e.last_name last_name,e.email email,e.gender gender
+        from
+            tbl_dept d
+        inner join
+            tbl_employee e
+        on
+            e.d_id=d.id
+        where
+            d.id=#{id};
+    </select>
+
+    <!-- fetchType: 是否开启延迟加载  lazy:开启延迟加载中  eager: 关闭延迟加载 -->
+    <resultMap id="Step" type="com.atguigu.bean.Department">
+        <id column="id" property="id"></id>
+        <result column="dept_name" property="departmentName"></result>
+        <collection property="employees"
+                    select="com.atguigu.dao.EmployeeMapperPlus.getBydid"
+                    column="{tid=id}" fetchType="lazy"></collection>
+    </resultMap>
+
+
+    <select id="getByIdStep" resultMap="Step">
+        select * from tbl_dept where id=#{id};
+    </select>
+
+</mapper>

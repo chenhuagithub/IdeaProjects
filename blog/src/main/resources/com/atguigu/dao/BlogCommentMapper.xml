@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.atguigu.dao.BlogCommentMapper">
+
+    <resultMap id="blogCommentMap" type="com.atguigu.bean.BlogComment">
+        <id property="id" column="id"></id>
+        <result property="userIp" column="userIp"></result>
+        <result property="blogId" column="blogId"></result>
+        <result property="content" column="content"></result>
+        <result property="commentDate" column="commentDate"></result>
+        <result property="state" column="state"></result>
+        <result property="blogger.id" column="did"></result>
+        <result property="blogger.userName" column="userName"></result>
+        <result property="blogger.imageName" column="imageName"></result>
+    </resultMap>
+
+    <insert id="addComment">
+        insert into
+            t_comment(userIp, blogId, content, commentDate, state)
+        values
+            (#{userIp},#{blogId},#{content},#{commentDate},#{state})
+    </insert>
+
+
+    <select id="getBlogComment" resultMap="blogCommentMap">
+        select t1.id, t1.userIp, t1.blogId, t1.content, t1.commentDate, t1.state, t2.id did, t2.userName, t2.imageName from  t_comment t1 left join t_blogger t2 on t1.userIp=t2.id where blogId = #{blogId};
+    </select>
+
+    <select id="getCommentCount" resultMap="blogCommentMap">
+        select * from t_comment where
+    </select>
+
+
+</mapper>

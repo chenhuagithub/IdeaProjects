@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.atguigu.dao.BlogFocusMapper">
+
+    <resultMap id="blogFocusMap" type="com.atguigu.bean.BlogFocus">
+        <id property="id" column="id"></id>
+        <result property="focusId" column="focusId"></result>
+        <result property="befocusId" column="befocusId"></result>
+    </resultMap>
+
+
+    <insert id="addBlogFocus">
+        insert into
+            t_focus(focusId, befocusId)
+        values
+            (#{focusId}, #{befocusId})
+    </insert>
+
+
+    <select id="findAllBlogFocus" resultMap="blogFocusMap">
+        select * from t_focus where focusId = #{focusId}
+    </select>
+
+
+    <delete id="deleteBlogFocus">
+        delete from t_focus where focusId = #{focusId} and befocusId = #{befocusId}
+    </delete>
+
+
+    <select id="findOneBlogFocus" resultMap="blogFocusMap">
+        select * from t_focus where focusId = #{focusId} and befocusId = #{befocusId};
+    </select>
+
+
+</mapper>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="demo" />
+        <module name="microservicecloud-config" />
+        <module name="microservicecloud-config-client-3355" />
+        <module name="consumer-demo" />
+        <module name="eureka-service" />
+        <module name="user-service" />
+        <module name="hello-spring-cloud-config" />
+        <module name="zuul-demo" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="microservicecloud-config-3344" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="consumer-demo" options="-parameters" />
+      <module name="demo" options="-parameters" />
+      <module name="eureka-service" options="-parameters" />
+      <module name="hello-spring-cloud-config" options="-parameters" />
+      <module name="microservicecloud-config" options="-parameters" />
+      <module name="microservicecloud-config-3344" options="-parameters" />
+      <module name="microservicecloud-config-client-3355" options="-parameters" />
+      <module name="user-service" options="-parameters" />
+      <module name="zuul-demo" options="-parameters" />
+    </option>
+  </component>
+</project>

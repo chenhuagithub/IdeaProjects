@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.atguigu.dao.BloggerMapper">
+
+    <resultMap id="bloggerMap" type="com.atguigu.bean.Blogger">
+        <id property="id" column="id"></id>
+        <result property="userName" column="userName"></result>
+        <result property="password" column="password"></result>
+        <result property="profile" column="profile"></result>
+        <result property="nickName" column="nickName"></result>
+        <result property="sign" column="sign"></result>
+        <result property="imageName" column="imageName"></result>
+        <result property="phone" column="phone"></result>
+    </resultMap>
+
+    <insert id="addBlogger" useGeneratedKeys="true">
+        insert into
+            t_blogger(userName, password, phone)
+        values
+            (#{userName}, #{password}, #{phone})
+    </insert>
+
+    <!-- 使用用户名查询用户   -->
+    <select id="selectBlogger" resultMap="bloggerMap">
+        select * from t_blogger
+        <where>
+            userName = #{userName};
+        </where>
+    </select>
+
+    <!-- 查询所有用户 -->
+    <select id="selectAllBlogger" resultMap="bloggerMap">
+        select * from t_blogger;
+    </select>
+
+    <update id="updateBloggerInfo">
+        update  t_blogger
+        <set>
+            userName = #{userName}, nickName = #{nickName}, profile = #{profile}, sign = #{sign}
+        </set>
+        <where>
+            id = #{id};
+        </where>
+    </update>
+
+
+    <select id="findBlogerById" resultMap="bloggerMap">
+        select * from t_blogger where id= #{id};
+    </select>
+
+
+    <update id="uploadImage">
+        update t_blogger
+        <set>
+            imageName = #{imageName}
+        </set>
+        <where>
+            id = #{id};
+        </where>
+    </update>
+
+    <update id="changePassword">
+        update t_blogger
+        <set>
+            password = #{oldPassword}
+        </set>
+        <where>
+            id = #{id}
+        </where>
+    </update>
+
+
+    <select id="findAllInfo" resultMap="bloggerMap">
+        select * from t_blogger where id = #{id}
+    </select>
+
+</mapper>

@@ -1,0 +1,14 @@
+spring:
+  mvc:
+    view:
+      prefix: /pages/
+      suffix: .html
+
+http:
+  encoding:
+    force: true
+    charset: utf-8
+    enabled: true
+
+#server:
+#  port: 8888

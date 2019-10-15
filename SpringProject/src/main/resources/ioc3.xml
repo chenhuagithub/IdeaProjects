@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+
+    <bean id="person" class="com.atguitu.bean.Person" scope="prototype"></bean>
+    <bean id="car" class="com.atguitu.bean.Car"></bean>
+    <bean id="book" class="com.atguitu.bean.Book"></bean>
+
+    <!--  工厂模式  -->
+    <!--
+        factory-method: 指定哪个方法是静态方法
+        class: 指定静态方法的全类名
+        constructor: 可以为方法传递参数
+    -->
+
+    <bean id="airPlane01" class="com.atguitu.factory.AirPlaneStaticFactory" factory-method="getAirPlane">
+        <constructor-arg value="李四"></constructor-arg>
+    </bean>
+
+
+    <!-- 实例工厂 -->
+    <bean id="airPlaneInstanceFactory" class="com.atguitu.factory.AirPlaneInstanceFactory">
+
+    </bean>
+
+    <!--
+        实例工厂的使用步骤:
+            1. 先配置出实例工厂对象
+            2. 配置我们要创建的AirPlane使用哪个工厂创建
+                factory-bean: 指定使用哪个工厂实例
+                factory-method: 使用哪个工厂方法
+    -->
+    <bean id="airPlane02" class="com.atguitu.bean.AirPlane"
+        factory-bean="airPlaneInstanceFactory"
+        factory-method="getAirPlane">
+        <constructor-arg value="王五"></constructor-arg>
+    </bean>
+
+    <!--  动态加载配置文件  -->
+    <!-- 固定写法classpath: 引用类路径下的一个资源 -->
+    <context:property-placeholder location="classpath:dbconfig.properties"></context:property-placeholder>
+
+
+
+    <!-- 数据库连接池 -->
+    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+        <property name="user" value="${jdbc.username}"></property>
+        <property name="password" value="${jdbc.password}"></property>
+        <property name="jdbcUrl" value="${jdbc.jdbcUrl}"></property>
+        <property name="driverClass" value="${jdbc.driverClass}"></property>
+    </bean>
+
+
+
+</beans>

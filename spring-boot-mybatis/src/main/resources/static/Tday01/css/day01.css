@@ -1,0 +1,88 @@
+#div01 {
+    width: 100%; /*宽*/
+    height: 1050px; /*高*/
+    /*边框*/
+}
+
+#div0101 {
+    width: 100%;
+    height: 100px;
+
+}
+
+#div010101 {
+    width: 25%;
+    height: 100px;
+
+    background-image: url(../img/stumalllogo.png);
+    background-repeat: no-repeat;
+    background-size: 90% 90%;
+    float: left;
+}
+
+#div010102 {
+    width: 50%;
+    height: 100px;
+    float: left;
+}
+
+#div010103 {
+    width: 25%;
+    height: 100px;
+    float: left;
+    text-align: right;
+    line-height: 160px;
+
+}
+
+#div0102 {
+    width: 100%;
+    height: 650px;
+
+    background-image: url(../img/bg1.jpg);
+    /*不平铺*/
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+#div0103 {
+    width: 100%;
+    height: 150px;
+
+}
+
+#div010301 {
+    width: 20%;
+    height: 150px;
+}
+
+#div010302 {
+    width: 15%;
+    height: 150px;
+}
+
+#div010303 {
+    width: 15%;
+    height: 150px;
+}
+
+#div010304 {
+    width: 15%;
+    height: 150px;
+}
+
+#div010305 {
+    width: 15%;
+    height: 150px;
+}
+
+#div010306 {
+    width: 20%;
+    height: 150px;
+}
+
+#div0104 {
+    width: 100%;
+    height: 150px;
+
+}

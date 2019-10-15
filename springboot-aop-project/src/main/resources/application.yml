@@ -1,0 +1,16 @@
+server:
+  port: 8011
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/jdbc?useUnicode=true&characterEncoding=UTF-8
+    username: ENC(o8xdYmzu2PcE0bSBE7hiVw==)
+    password: ENC(nENx4748KIAFwti8e7SqUQ==)
+jasypt:
+  encryptor:
+    password: chenhua
+    property:
+      prefix: "ENC("
+      suffix: ")"
+

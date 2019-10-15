@@ -1,0 +1,7 @@
+spring:
+  datasource:
+    username: root
+    password: 654321
+    url: jdbc:mysql//localhost:3307/jdbc
+    driver-class-name: com.mysql.jdbc.Driver
+#    schema: classpath:schema-all.sql

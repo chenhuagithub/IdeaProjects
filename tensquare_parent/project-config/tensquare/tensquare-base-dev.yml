@@ -1,0 +1,27 @@
+# 端口
+server:
+  port: 8017
+
+# 模块名字
+spring:
+  application:
+    name: tensquare-base
+
+  # 连接数据库
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:13306/tensquare_base?useUnicode=true&characterEncoding=UTF-8
+    username: root
+    password: 123456
+
+
+
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:6868/eureka
+  instance:
+    prefer-ip-address: true

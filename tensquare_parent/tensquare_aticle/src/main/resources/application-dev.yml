@@ -1,0 +1,57 @@
+server:
+  port: 8004
+
+
+spring:
+  application:
+    name: tensquare-article
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:13306/tensquare_article?useUnicode=true&characterEncoding=UTF-8
+    username: root
+    password: 123456
+  cache:
+    ehcache:
+      config: classpath:/ehcache.xml
+  redis:
+    host: localhost
+
+
+
+mybatis-plus:
+  # 指定全局配置文件的位置
+  config-location: classpath:mybatis/mybatis-config.xml
+  # 指定映射文件的位置
+  mapper-locations: mybatis/mapper/*.xml
+
+
+
+
+
+
+# 日志
+logging:
+  level:
+    com:
+      atguigu:
+        tensquare_aticle:
+          dao: debug
+
+
+
+# 分页配置
+pagehelper:
+  helper-dialect: mysql
+  reasonable: true
+  support-methods-arguments: true
+  params: count=countSql
+
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://localhost:6868/eureka/
+  instance:
+    prefer-ip-address: true
+

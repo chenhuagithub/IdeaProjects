@@ -1,0 +1,26 @@
+server:
+  port: 8011
+
+spring:
+  application:
+    name: tensquare-zuul
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:6868/eureka/
+zuul:
+  routes:
+    tensquare-base:
+      path: /tensquare-base/**
+      serviceId: TENSQUARE-BASE
+    tensquare-qa:
+      path: /tensquare-qa/**
+      serviceId: TENSQUARE-QA
+    tensquare-user:
+      path: /tensquare-user/**
+      serviceId: TENSQUARE_USER
+  sensitive-headers:
+
+

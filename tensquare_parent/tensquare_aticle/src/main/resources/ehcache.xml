@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="http://ehcache.org/ehcache.xsd"
+         updateCheck="false">
+    <!-- 磁碟快取位置 -->
+    <diskStore path="java.io.tmpdir" />
+    <!--
+    name:快取名稱。
+    maxElementsInMemory：快取最大個數。
+    eternal:物件是否永久有效，一但設定了，timeout將不起作用。
+    timeToIdleSeconds：設定物件在失效前的允許閒置時間（單位：秒）。僅當eternal=false物件不是永久有效時使用，可選屬性，預設值是0，也就是可閒置時間無窮大。
+    timeToLiveSeconds：設定物件在失效前允許存活時間（單位：秒）。最大時間介於建立時間和失效時間之間。僅當eternal=false物件不是永久有效時使用，預設是0.，也就是物件存活時間無窮大。
+    overflowToDisk：當記憶體中物件數量達到maxElementsInMemory時，Ehcache將會物件寫到磁碟中。
+    diskSpoolBufferSizeMB：這個引數設定DiskStore（磁碟快取）的快取區大小。預設是30MB。每個Cache都應該有自己的一個緩衝區。
+    maxElementsOnDisk：硬碟最大快取個數。
+    diskPersistent：是否快取虛擬機器重啟期資料 Whether the disk store persists between restarts of the Virtual Machine. The default value is false.
+    diskExpiryThreadIntervalSeconds：磁碟失效執行緒執行時間間隔，預設是120秒。
+    memoryStoreEvictionPolicy：當達到maxElementsInMemory限制時，Ehcache將會根據指定的策略去清理記憶體。預設策略是LRU（最近最少使用）。你可以設定為FIFO（先進先出）或是LFU（較少使用）。
+    clearOnFlush：記憶體數量最大時是否清除。
+    -->
+
+    <!-- 預設快取 -->
+    <defaultCache
+            eternal="false"
+            maxElementsInMemory="1000"
+            overflowToDisk="false"
+            diskPersistent="false"
+            timeToIdleSeconds="0"
+            timeToLiveSeconds="600"
+            memoryStoreEvictionPolicy="LRU" />
+    <!-- 自定義快取 -->
+    <cache
+            name="testCache"
+            eternal="false"
+            maxElementsInMemory="1000"
+            overflowToDisk="false"
+            diskPersistent="false"
+            timeToIdleSeconds="5"
+            timeToLiveSeconds="5"
+            memoryStoreEvictionPolicy="LRU" />
+</ehcache>

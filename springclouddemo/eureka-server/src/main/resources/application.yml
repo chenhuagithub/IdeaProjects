@@ -1,0 +1,23 @@
+# 配置端口号
+server:
+  port: 8081
+
+# 配置服务名称
+spring:
+  application:
+    name: eureka-service
+
+# 注册服务中心
+eureka:
+  instance:
+    #主机ip
+    hostname: localhost
+  client:
+    # 表示是否将自己注册到Eureka Servier上, 默认为false
+    register-with-eureka: true
+    # 表示是否从Eureka Server上获取注册信息, 默认为true
+    fetch-registry: false
+    # 注册地址
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+

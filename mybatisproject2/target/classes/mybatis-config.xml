@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!--  引入外部properties配置文件  -->
+    <properties resource="dbconfig.properties"></properties>
+
+
+    <!--
+        mapUnderscoreToCamelCase: 是否开启驼峰命名法======true/false
+        lazyLoadingEnabled: 是否开启延迟加载
+        cacheEnabled: 是否开启二级缓存
+        
+     -->
+    <settings>
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+        <setting name="lazyLoadingEnabled" value="true"/>
+        <setting name="aggressiveLazyLoading" value="false"/>
+        <setting name="cacheEnabled" value="true"/>
+    </settings>
+
+    <!--
+        1.typeAliases：别名处理器，可以为java类型取别名
+        2.别名不区分大小写
+     -->
+<!--    <typeAliases>-->
+    <!--
+        typeAlias：为某个java类型取别名
+        type： 指定要起别名的类型的全类名，默认的别名是类名小写(employee)
+        alias: 指定新的别名
+    -->
+<!--        <typeAlias type="com.atguigu.bean.Employee" alias="aliasemployee"></typeAlias>-->
+
+
+    <!--
+        package:为包下的所有类批量取别名
+        name： 指定包名(为当前包以及后代所有包的每一个类起一个默认别名（类名小写），)
+     -->
+<!--    <package name="com.atguigu.bean"/>-->
+<!--    </typeAliases>-->
+
+
+
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="${jdbc.driver}"/>
+                <property name="url" value="${jdbc.url}"/>
+                <property name="username" value="${jdbc.username}"/>
+                <property name="password" value="${jdbc.password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+    <!--
+        mappers:注册一个sql映射
+            resource: 引用类路径下的sql映射文件
+                "mybatis/mapper/EmployeeMapper.xml
+            url： 引用网络路径或者磁盘路径下的sql映射文件
+                file: //xxx/xxx.xml
+            class: 引用(注册)接口
+                条件：
+                    1.有sql映射文件， 映射文件名必须和接口同名， 并且放在接口统一目录下
+                    2.没有sql映射文件， 所有的sql都是利用注解
+
+    -->
+    <mappers>
+<!--        <mapper url="/opt/EmployeeMapper.xml"></mapper>-->
+<!--        <mapper resource="mybatis/mapper/EmployeeMapper.xml"/>-->
+<!--        <mapper class="com.atguigu.dao.EmployeeMapperAnnotation"></mapper>-->
+<!--        <mapper class="com.atguigu.dao.EmployeeMapper"></mapper>-->
+        <package name="com.atguigu.dao"/>
+    </mappers>
+
+
+
+
+</configuration>

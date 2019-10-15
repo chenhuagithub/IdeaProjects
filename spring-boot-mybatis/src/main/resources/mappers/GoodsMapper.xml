@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+        "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="tedu.store.mapper.GoodsMapper">
+
+    <!-- 处理商品数据的持久层接口 -->
+    <!-- List<Goods> findHotGoods() -->
+    <select id="findHotGoods"
+            resultType="tedu.store.entity.Goods">
+        SELECT
+        id, title, price, image
+        FROM
+        t_order_item
+        LIMIT
+        0,4
+    </select>
+
+    <!-- 根据id查询商品详情 -->
+    <!-- Goods findById(Long id) -->
+    <select id="findById"
+            resultType="tedu.store.entity.Goods">
+        SELECT
+        t2.image, t1.title,
+        t1.price, t1.num
+
+        FROM
+        t_order_item t1, t_order_item_sub t2
+        WHERE
+        t1.id=#{id} and t1.id =t2.to_order_item_id
+    </select>
+
+    <!--	<insert id="addOrderCar" parameterType="tedu.store.entity.OrderCar">-->
+    <!--		insert into-->
+    <!--			ordercar(username,image,product,num,sumprice)-->
+    <!--		values-->
+    <!--			(#{username},#{image},#{product},#{oneprice},#{num},#{sumprice});-->
+    <!--	</insert>-->
+
+</mapper>
+
+
+
+
+
+

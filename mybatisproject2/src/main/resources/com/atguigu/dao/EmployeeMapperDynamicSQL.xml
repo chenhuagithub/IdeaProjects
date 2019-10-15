@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.atguigu.dao.EmployeeMapperDynamicSQL">
+    <!--  public List<Employee> getByConditionIf(Employee employee);  -->
+    <select id="getByConditionIf" resultType="com.atguigu.bean.Employee">
+        select * from tbl_employee
+
+        <!--
+            test: 判断表达式(OGNL), 从参数中取值进行判断
+            注意: 遇到特殊字符使用转义字符
+        -->
+        <!-- where: 根据需要动态地去掉sql前面的and或者or -->
+        <where>
+            <if test="id!=null">
+                id=#{id}
+            </if>
+            <if test="lastName!=null &amp;&amp; lastName!=&quot;&quot;">
+                and last_name like #{lastName}
+            </if>
+            <if test="email!=null and email.trim()!=&quot;&quot;">
+                and email=#{email}
+            </if>
+            <if test="gender==0 or gender==1">
+                and gender=#{gender}
+            </if>
+        </where>
+
+    </select>
+
+    <!--  trim标签  -->
+    <!--
+         prefix="": 前缀,trim标签体中是整个字符串后的结果.
+                prefix给拼串后的整个字符串加一个前缀
+         prefixOverrides="":
+                前缀覆盖, 去掉整个字符串前面多余的字符
+         suffix="":后缀
+                    给拼串后的整个字符串加一个后缀
+         suffixOverrides="":
+                 后缀覆盖, 去掉整个字符串后面多余的字符
+    -->
+    <select id="getByConditionIf2" resultType="com.atguigu.bean.Employee">
+        select * from tbl_employee
+        <trim prefix="where" suffixOverrides="and">
+            <if test="id!=null">
+                id=#{id} and
+            </if>
+            <if test="lastName!=null &amp;&amp; lastName!=&quot;&quot;">
+                last_name like #{lastName} and
+            </if>
+            <if test="email!=null and email.trim()!=&quot;&quot;">
+                email=#{email} and
+            </if>
+            <if test="gender==0 or gender==1">
+                gender=#{gender}
+            </if>
+        </trim>
+    </select>
+
+
+    <select id="getByChoose" resultType="com.atguigu.bean.Employee">
+        select * from tbl_employee
+        <where>
+            <choose>
+                <when test="id!=null">
+                    id=#{id}
+                </when>
+                <when test="lastName!=null">
+                    last_name like #{lastName}
+                </when>
+                <when test="email!=null">
+                    email=#{email}
+                </when>
+                <otherwise>
+                    gender=1
+                </otherwise>
+            </choose>
+        </where>
+    </select>
+
+
+    <update id="updateEmp">
+        update tbl_employee
+        <set>
+            <if test="lastName!=null">
+                last_name=#{lastName},
+            </if>
+            <if test="gender!=null">
+                gender=#{gender},
+            </if>
+            <if test="email!=null">
+                email=#{email}
+            </if>
+        </set>
+        where
+            id=#{id}
+    </update>
+
+
+    <select id="getByIdForeach" resultType="com.atguigu.bean.Employee" >
+        select 
+        <include refid="inserColumn"></include> 
+        from tbl_employee
+        <!--
+            collection: 指定要遍历的集合,
+        -->
+        <where>
+        id in
+            <foreach item="item" collection="list" separator="," open="(" close=")">
+                #{item}
+            </foreach>
+        </where>
+    </select>
+
+
+    <insert id="addEmpsForeach">
+        insert into tbl_employee(last_name, gender, email, d_id) values
+        <foreach item="item" collection="emps" separator="," >
+            (#{item.lastName},#{item.gender},#{item.email},#{item.department.id})
+        </foreach>
+    </insert>
+
+    <resultMap id="fbln" type="com.atguigu.bean.Employee">
+        <id column="id" property="id"></id>
+        <result column="last_name" property="lastName"></result>
+        <result column="gender" property="gender"></result>
+        <result column="email" property="email"></result>
+    </resultMap>
+
+    <select id="findBylastName" resultMap="fbln">
+        select * from tbl_employee
+     <bind name="_lastName" value="'%'+lastName+'%'"/>
+     <where>
+         last_name like #{_lastName}
+     </where>
+    </select>
+
+    <!-- 抽取可重用的sql片段, 方便后面引用  -->
+    <sql id="inserColumn">
+        id, last_name, gender, email
+    </sql>
+
+</mapper>

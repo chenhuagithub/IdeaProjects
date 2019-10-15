@@ -1,0 +1,9 @@
+spring:
+  profiles:
+    active: dev
+
+mybatis:
+  # 指定全局配置文件的位置
+  config-location: classpath:mybatis/mybatis-config.xml
+  # 指定映射文件的位置
+  mapper-locations: mybatis/mapper/*.xml

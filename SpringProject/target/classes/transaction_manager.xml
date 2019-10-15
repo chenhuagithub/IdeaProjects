@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
+
+
+    <!-- 1.开启注解扫描 -->
+    <!-- 2. 引入外部文件 -->
+    <!-- 3. 配置数据源   -->
+    <!-- 4. 配置jdbcTemplate操作数据据   -->
+    <!-- 5. 配置声明式事务   -->
+    <!-- 6. 开启基于注解的事务控制模式, 依赖tx名称空间  -->
+
+    <context:component-scan base-package="com.atguitu"></context:component-scan>
+
+    <context:property-placeholder location="classpath:dbconfig.properties"></context:property-placeholder>
+
+    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+        <property name="user" value="${jdbc.username}"></property>
+        <property name="password" value="${jdbc.password}"></property>
+        <property name="jdbcUrl" value="${jdbc.jdbcUrl}"></property>
+        <property name="driverClass" value="${jdbc.driverClass}"></property>
+    </bean>
+
+    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+        <property name="dataSource" ref="dataSource"></property>
+    </bean>
+
+    <bean id="dataSourceTransactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"></property>
+    </bean>
+
+    <tx:annotation-driven transaction-manager="dataSourceTransactionManager" proxy-target-class="true"></tx:annotation-driven>
+
+
+    <!--
+        事务细节
+        1. isolation-Isolation: 事务的隔离级别
+            read-uncommitted
+
+        2. propagation-Propagation: 事务的传播行为
+
+        3. noRollbackFor-Class[]: 哪些异常事务可以不回滚
+
+        4. noRollbackForClassName-String[]: 哪些异常事务可以不回滚(全类名)
+
+        5. rollbackFor-Class[]: 哪些异常事务需要回滚
+
+        6. rollbackForClassName-String[]: 哪些异常事务需要回滚(全类名)
+
+        7. readOnly-boolean: 设置事务为只读事务
+
+        8. timeout-int: 超时, 事务超出指定执行时长后自动终止并回滚
+
+    -->
+
+
+</beans>

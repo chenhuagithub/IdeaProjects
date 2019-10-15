@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="tensquare-base" />
+        <module name="tensquare_activemq" />
+        <module name="tensquare_friend" />
+        <module name="tensquare_qa" />
+        <module name="tensquare_aticle" />
+        <module name="tensquare_config" />
+        <module name="tensquare_recruit" />
+        <module name="tensquare_user" />
+        <module name="tensquare_rabbitmq" />
+        <module name="tenquare_eureka" />
+        <module name="tensquare_common" />
+        <module name="tensquare_zuul" />
+      </profile>
+    </annotationProcessing>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="tenquare_eureka" options="-parameters" />
+      <module name="tensquare-base" options="-parameters" />
+      <module name="tensquare_activemq" options="-parameters" />
+      <module name="tensquare_aticle" options="-parameters" />
+      <module name="tensquare_common" options="-parameters" />
+      <module name="tensquare_config" options="-parameters" />
+      <module name="tensquare_friend" options="-parameters" />
+      <module name="tensquare_qa" options="-parameters" />
+      <module name="tensquare_rabbitmq" options="-parameters" />
+      <module name="tensquare_recruit" options="-parameters" />
+      <module name="tensquare_user" options="-parameters" />
+      <module name="tensquare_zuul" options="-parameters" />
+    </option>
+  </component>
+</project>

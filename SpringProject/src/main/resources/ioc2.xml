@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+
+    <bean id="car" class="com.atguitu.bean.Car">
+        <property name="carName" value="宝马"></property>
+        <property name="color" value="蓝色"></property>
+        <property name="price" value="312321"></property>
+    </bean>
+
+    <bean id="person" class="com.atguitu.bean.Person">
+        <property name="lastName">
+            <null></null>
+        </property>
+    </bean>
+
+    <bean id="person2" class="com.atguitu.bean.Person">
+        <property name="lastName" value="李四"></property>
+        <property name="email" value="38746@qq.com"></property>
+        <property name="gender" value="男"></property>
+        <property name="age" value="213"></property>
+        <!-- ref: 代表引用外面的一个值 -->
+        <property name="car" ref="car"></property>
+    </bean>
+
+    <bean id="person3" class="com.atguitu.bean.Person">
+        <property name="lastName" value="曹操"></property>
+        <property name="age" value="34"></property>
+        <property name="gender" value="男"></property>
+        <property name="email" value="3846@qq.com"></property>
+        <property name="car">
+            <!-- 给Person类的Car属性实例化 -->
+            <bean id="car2" class="com.atguitu.bean.Car">
+                <property name="carName" value="丰田"></property>
+                <property name="price" value="3874"></property>
+                <property name="color" value="红色"></property>
+            </bean>
+        </property>
+    </bean>
+
+
+    <bean id="book" class="com.atguitu.bean.Book">
+        <property name="bookName" value="python从入门到精通"></property>
+        <property name="author" value="张三"></property>
+    </bean>
+
+    <bean id="person4" class="com.atguitu.bean.Person">
+        <property name="book">
+            <!-- 为list赋值 -->
+            <list>
+                <bean id="book2" class="com.atguitu.bean.Book">
+                    <property name="bookName" value="java从入门到放弃"></property>
+                    <property name="author" value="吴东周"></property>
+                </bean>
+                <ref bean="book"></ref>
+            </list>
+        </property>
+        <property name="maps">
+            <!-- 为map赋值 -->
+            <map>
+                <entry key="key01" value="value01"></entry>
+                <entry key="key02" value="value02"></entry>
+                <entry key="key03" value-ref="book"></entry>
+                <entry key="key04">
+                    <bean class="com.atguitu.bean.Car">
+                        <property name="carName" value="二手宝马"></property>
+                        <property name="price" value="36328"></property>
+                        <property name="color" value="黄色"></property>
+                    </bean>
+                </entry>
+            </map>
+        </property>
+        <property name="properties">
+            <props>
+                <prop key="username">chenhua</prop>
+                <prop key="password">123456</prop>
+            </props>
+        </property>
+    </bean>
+
+
+    <bean id="person5" class="com.atguitu.bean.Person">
+        <property name="book" ref="mylist"></property>
+        <property name="maps" ref="mymap"></property>
+    </bean>
+
+    <!-- 相当与new LinkedHashMap<>() -->
+    <util:map id="mymap">
+        <entry key="key01" value="value01"></entry>
+        <entry key="key02" value="value02"></entry>
+        <entry key="key03" value-ref="book"></entry>
+        <entry key="key04">
+            <bean class="com.atguitu.bean.Car">
+                <property name="carName" value="二手宝马"></property>
+                <property name="price" value="36328"></property>
+                <property name="color" value="黄色"></property>
+            </bean>
+        </entry>
+    </util:map>
+
+
+    <util:list id="mylist">
+        <bean class="com.atguitu.bean.Book">
+            <property name="bookName" value="book1"></property>
+            <property name="author" value="author1"></property>
+        </bean>
+    </util:list>
+
+
+    <bean id="person6" class="com.atguitu.bean.Person" abstract="false">
+        <property name="lastName" value="李四"></property>
+        <property name="email" value="38746@qq.com"></property>
+        <property name="gender" value="男"></property>
+        <property name="age" value="213"></property>
+    </bean>
+
+    <bean id="person7" class="com.atguitu.bean.Person" parent="person6">
+        <property name="lastName" value="陈华"></property>
+    </bean>
+
+
+</beans>

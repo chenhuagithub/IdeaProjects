@@ -1,0 +1,33 @@
+server:
+  port: 8012
+
+spring:
+  application:
+    name: tensquare-config
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://gitee.com/chenhuagitee/tensquare.git
+  rabbitmq:
+    host: localhost
+#  rabbitmq:
+#    host: localhost
+
+# 暴露触发消息总线的地方
+
+
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://localhost:6868/eureka/
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: bus-refresh
+

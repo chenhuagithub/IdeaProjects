@@ -1,0 +1,15 @@
+server:
+  port: 8082
+
+eureka:
+  instance:
+    #主机ip
+    hostname: localhost
+  client:
+    # 表示是否将自己注册到Eureka Servier上, 默认为false
+    register-with-eureka: true
+    #    # 表示是否从Eureka Server上获取注册信息, 默认为true
+    fetch-registry: true
+    # 注册地址
+    service-url:
+      defaultZone: http://localhost:8084/eureka/

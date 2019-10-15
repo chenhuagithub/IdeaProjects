@@ -1,0 +1,15 @@
+<fieldtype name="textComplex" class="solr.TextField" positionIncrementGap="100">
+    <analyzer>
+        <tokenizer class="com.chenlb.mmseg4j.solr.MMSegTokenizerFactory" mode="complex" dicPath="/media/chenhua/DATA/IdeaProject/luceneproject/src/main/resources/dic"/>
+    </analyzer>
+</fieldtype>
+<!--<fieldtype name="textMaxWord" class="solr.TextField" positionIncrementGap="100">-->
+<!--<analyzer>-->
+<!--    <tokenizer class="com.chenlb.mmseg4j.solr.MMSegTokenizerFactory" mode="max-word" />-->
+<!--</analyzer>-->
+<!--</fieldtype>-->
+<!--<fieldtype name="textSimple" class="solr.TextField" positionIncrementGap="100">-->
+<!--<analyzer>-->
+<!--    <tokenizer class="com.chenlb.mmseg4j.solr.MMSegTokenizerFactory" mode="simple" dicPath="n:/custom/path/to/my_dic" />-->
+<!--</analyzer>-->
+<!--</fieldtype>-->

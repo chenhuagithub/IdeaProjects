@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.atguigu.dao.EmployeeMapper">
+
+    <!--  开启缓存  -->
+    <!--
+        eviction=“FIFO”:缓存回收策略:
+            LRU – 最近最少使用的:移除最长时间不被使用的对象。
+            FIFO – 先进先出:按对象进入缓存的顺序来移除它们。
+            SOFT – 软引用:移除基于垃圾回收器状态和软引用规则的对象。
+            WEAK – 弱引用:更积极地移除基于垃圾收集器状态和弱引用规则的对象。
+            默认的是 LRU。
+        flushInterval:刷新间隔,单位毫秒
+            默认情况是不设置,也就是没有刷新间隔,缓存仅仅调用语句时刷新
+        size:引用数目,正整数
+            代表缓存最多可以存储多少个对象,太大容易导致内存溢出
+        readOnly:只读,true/false
+            true:只读缓存;会给所有调用者返回缓存对象的相同实例。因此这些对象
+                不能被修改。这提供了很重要的性能优势。
+            false:读写缓存;会返回缓存对象的拷贝(通过序列化)。这会慢一些,
+                    但是安全,因此默认是 false
+    -->
+<!--    <cache eviction="FIFO" flushInterval="60000" size="1024" readOnly="false"></cache>-->
+
+
+
+    <cache type="org.mybatis.caches.ehcache.EhcacheCache"></cache>
+    <select id="EmpByMap" resultType="com.atguigu.bean.Employee">
+        select * from ${tablename} where id=#{id} and last_name=#{lastName}
+    </select>
+
+    <select id="EmpById" resultType="com.atguigu.bean.Employee">
+    select * from tbl_employee where id = #{id} and last_name=#{lastName}
+    </select>
+
+    <!-- public void addEmp(Employee employee);-->
+    <!--
+        parameterType: 指明参数类型
+        useGeneratedKeys:使用自增主键获取主键
+        keyProperty： 指定对应的主键属性， 也就是mybatis获取到主键值以后， 将这个值封装给javabean的哪个属性
+    -->
+    <insert id="addEmp" parameterType="com.atguigu.bean.Employee"  useGeneratedKeys="true" keyProperty="id">
+        insert into tbl_employee(last_name, gender, email) values (#{lastName},#{gender},#{email});
+    </insert>
+
+    <!-- public void updateEmp(Employee employee); -->
+    <update id="updateEmp">
+        update tbl_employee set last_name=#{lastName},email=#{email},gender=#{gender} where id=#{id}
+    </update>
+
+    <!-- public void deleteEmpById(Integer id); -->
+    <delete id="deleteEmpById">
+        delete from tbl_employee where id=#{id}
+    </delete>
+
+
+    <select id="selectByLastName" resultType="com.atguigu.bean.Employee">
+        select * from tbl_employee where last_name like #{lastName};
+    </select>
+
+<!--    public Map<String, Object> selectByIdReturnMap(Integer id);-->
+    <select id="selectByIdReturnMap" resultType="map">
+        select * from tbl_employee where id=#{id};
+    </select>
+<!--    public Map<Integer, Employee> selectByIdReturnMoreMap();-->
+    <select id="selectByIdReturnMoreMap" resultType="com.atguigu.bean.Employee">
+        select * from tbl_employee where last_name like #{lastName};
+    </select>
+
+
+
+    <resultMap id="getDis" type="com.atguigu.bean.Employee">
+        <id column="id" property="id"></id>
+        <result column="last_name" property="lastName"></result>
+        <result column="gender" property="gender"></result>
+        <result column="email" property="email"></result>
+
+        <!--
+            鉴别器: mybatis可以使用discriminator判断某列的值, 然后根据某列的值改变封装行为,
+            例:封装Employee
+                如果查处的是女生, 就把部门信息查询出来, 否则不查询;
+                如果是男生, 把last_name这一列赋值给email
+        -->
+        <discriminator javaType="string" column="gender">
+
+            <case value="0" resultType="com.atguigu.bean.Employee">
+                <association property="department"
+                             select="com.atguigu.dao.DepartmentMapper.getById"
+                             column="d_id"></association>
+            </case>
+
+            <case value="1" resultType="com.atguigu.bean.Employee">
+                <id column="id" property="id"></id>
+                <result column="last_name" property="lastName"></result>
+                <result column="last_name" property="gender"></result>
+                <result column="email" property="email"></result>
+            </case>
+        </discriminator>
+    </resultMap>
+
+    <select id="getByIdDis" resultMap="getDis" useCache="true">
+        select * from tbl_employee where id=#{id};
+    </select>
+
+
+</mapper>

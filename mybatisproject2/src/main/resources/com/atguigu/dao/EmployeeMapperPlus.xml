@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.atguigu.dao.EmployeeMapperPlus">
+
+<!--
+    自定义某个javaBean的封装规则
+    type: 自定义规则的java类型
+    id： 唯一id方便引用
+-->
+<resultMap id="myEmp" type="com.atguigu.bean.Employee">
+    <id column="id" property="id"></id>
+    <result column="last_name" property="lastName"></result>
+    <result column="gender" property="gender"></result>
+    <result column="email" property="email"></result>
+</resultMap>
+
+
+<!--    public Employee getEmpByIdMapResult(Integer id);-->
+    <select id="getEmpByIdMapResult" resultMap="myEmp">
+    select * from tbl_employee where id=#{id};
+  </select>
+
+
+
+    <!--
+        resultMap的使用场景
+        场景一：
+            查询Employee的同时查询员工对应的部门
+            Employee=====Department
+    -->
+    <resultMap id="EmpDif" type="map">
+        <id column="id" property="id"></id>
+        <result column="last_name" property="lastName"></result>
+        <result column="gender" property="gender"></result>
+        <result column="email" property="email"></result>
+        <result column="did" property="department.id"></result>
+        <result column="dept_name" property="department.departmentName"></result>
+    </resultMap>
+    <resultMap id="EmpDif2" type="com.atguigu.bean.Employee">
+        <id column="id" property="id"></id>
+        <result column="last_name" property="lastName"></result>
+        <result column="gender" property="gender"></result>
+        <result column="email" property="email"></result>
+        <!--
+             association: 可以指定联合的javaBean对象
+             property： 指定哪个属性是联合对象
+             javaType： 指定这个熟悉跟对象的类型[不能省略]
+        -->
+        <association property="department" javaType="com.atguigu.bean.Department">
+            <id column="did" property="id"></id>
+            <result column="dept_name" property="departmentName"></result>
+        </association>
+    </resultMap>
+    <!--  public Map<String, Object> getEmpByIdOneToManyMapResult(Integer id);  -->
+    <select id="getEmpByIdOneToManyMapResult" resultMap="EmpDif">
+        select em.id,em.last_name,em.gender,em.email,de.id id,de.dept_name from tbl_employee em left join tbl_dept de on em.d_id = de.id where em.id=#{id};
+    </select>
+    <select id="getEmpByIdOneToManyMapResult2" resultMap="EmpDif2">
+        select em.id,em.last_name,em.gender,em.email,de.id did,de.dept_name from tbl_employee em left join tbl_dept de on em.d_id = de.id where em.id=#{id};
+    </select>
+
+
+    <!--
+        使用association进行分步查询
+        1.先按照员工id查询员工信息
+        2.根据查询员工信息的d_id值去部门查出部门信息
+        3.部门设置道员工中
+    -->
+    <resultMap id="MyEmpByStep" type="com.atguigu.bean.Employee">
+        <id column="id" property="id"></id>
+        <result column="last_name" property="lastName"></result>
+        <result column="gender" property="gender"></result>
+        <result column="email" property="email"></result>
+        <!--
+            association定义关联对象的封装规则
+            select: 表明当前属性是调用select指定的方法查出的结果
+            column： 指定将哪一列的值传给这个方法
+            department: 指定是哪个属性
+        -->
+        <association property="department" select="com.atguigu.dao.DepartmentMapper.getById" column="d_id"></association>
+    </resultMap>
+
+    <select id="getById" resultMap="MyEmpByStep">
+        select * from tbl_employee where id = #{id};
+    </select>
+
+    <resultMap id="aaa" type="com.atguigu.bean.Employee">
+        <id column="id" property="id"></id>
+        <result column="last_name" property="lastName"></result>
+        <result column="gender" property="gender"></result>
+        <result column="email" property="email"></result>
+        <association property="department" select="com.atguigu.dao.DepartmentMapper.getById2" column="d_id"></association>
+    </resultMap>
+
+    <select id="getById2" resultMap="aaa">
+         select * from tbl_employee where id=#{id};
+
+    </select>
+
+    <resultMap id="getdid" type="com.atguigu.bean.Employee">
+        <id column="id" property="id"></id>
+        <result column="last_name" property="lastName"></result>
+        <result column="gender" property="gender"></result>
+        <result column="email" property="email"></result>
+    </resultMap>
+
+    <select id="getBydid" resultMap="getdid">
+        select * from tbl_employee where d_id=#{tid};
+    </select>
+
+
+
+
+</mapper>

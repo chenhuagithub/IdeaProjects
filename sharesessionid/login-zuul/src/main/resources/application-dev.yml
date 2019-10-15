@@ -1,0 +1,22 @@
+server:
+  port: 8003
+
+
+spring:
+  application:
+    name: login-zuul
+
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://localhost:8001/eureka/
+
+
+zuul:
+  routes:
+    login-demo:
+      path: /login-demo/**
+      serviceId: LOGIN-DEMO
+  sensitive-headers:

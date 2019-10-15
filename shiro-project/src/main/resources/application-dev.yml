@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: shiro-project
+
+  # 连接数据库
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/jdbc?useUnicode=true&characterEncoding=UTF-8
+    username: root
+    password: 123456
