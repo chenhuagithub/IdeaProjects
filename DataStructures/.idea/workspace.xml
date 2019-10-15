@@ -5,24 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="929a1f16-27a5-4092-ae8c-31206d90c00e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../.idea/.name" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SpringProject/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../luceneproject/.idea/libraries/IKAnalyzer6_5_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../springcloudproject/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../springcloudproject/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../springcloudproject/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../springcloudproject/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../springcloudproject/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../springcloudproject/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../springcloudproject/springcloudproject.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../sharesessionid/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../sharesessionid/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../shiro-project/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../shiro-project/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../shiro-project/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../shiro-project/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../springbootShiro" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../tensquare_parent/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../tensquare_parent/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../springboot-aop-project/src/main/java/com/atguigu/springbootaopproject/config/KaptchaConfiguration.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../springboot-aop-project/src/main/java/com/atguigu/springbootaopproject/controller/KaptchaController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../springboot-aop-project/src/main/resources/ehcache.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SpringProject/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../SpringProject/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ik-analyzer" beforeDir="false" afterPath="$PROJECT_DIR$/../ik-analyzer" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../shiroproject/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../shiroproject/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../springboot-aop-project/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../springboot-aop-project/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../springboot-aop-project/src/main/java/com/atguigu/springbootaopproject/SpringbootAopProjectApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/../springboot-aop-project/src/main/java/com/atguigu/springbootaopproject/SpringbootAopProjectApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../springboot-aop-project/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../springboot-aop-project/src/main/resources/application.yml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -257,7 +249,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="y" value="-4" />
     <option name="width" value="1920" />
     <option name="height" value="1084" />
@@ -348,6 +340,7 @@
   <component name="PropertiesComponent">
     <property name="DatabaseDriversLRU" value="mysql" />
     <property name="DefaultPlantUmlFileTemplate" value="UML Class" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="Arquillian JUnit4" />
@@ -499,12 +492,12 @@
       <workItem from="1570518765936" duration="11922000" />
       <workItem from="1570670610469" duration="14843000" />
       <workItem from="1570755069778" duration="1276000" />
-      <workItem from="1571112890283" duration="618000" />
+      <workItem from="1571112890283" duration="664000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="245661000" />
+    <option name="totallyTimeSpent" value="245707000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -516,7 +509,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="-4" width="1920" height="1084" extended-state="6" />
+    <frame x="0" y="-4" width="1920" height="1084" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4978166" visible="true" weight="0.14155982" />

@@ -5,24 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c55dfa29-a4f1-4586-9d8b-0bc726952a0a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../.idea/.name" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../luceneproject/.idea/libraries/IKAnalyzer6_5_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../springcloudproject/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../springcloudproject/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../springcloudproject/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../springcloudproject/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../springcloudproject/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../springcloudproject/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../springcloudproject/springcloudproject.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../sharesessionid/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../sharesessionid/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../shiro-project/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../shiro-project/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../shiro-project/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../shiro-project/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../springbootShiro" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../tensquare_parent/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../tensquare_parent/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../springboot-aop-project/src/main/java/com/atguigu/springbootaopproject/config/KaptchaConfiguration.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../springboot-aop-project/src/main/resources/ehcache.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DataStructures/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../DataStructures/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ik-analyzer" beforeDir="false" afterPath="$PROJECT_DIR$/../ik-analyzer" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../shiroproject/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../shiroproject/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../springboot-aop-project/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../springboot-aop-project/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../springboot-aop-project/src/main/java/com/atguigu/springbootaopproject/SpringbootAopProjectApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/../springboot-aop-project/src/main/java/com/atguigu/springbootaopproject/SpringbootAopProjectApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../springboot-aop-project/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../springboot-aop-project/src/main/resources/application.yml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -472,7 +463,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="-4" width="1920" height="1084" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22329059" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />

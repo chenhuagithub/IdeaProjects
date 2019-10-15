@@ -7,24 +7,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ca3766eb-318b-4971-8644-a1d32aeed0fa" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../.idea/.name" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SpringProject/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../luceneproject/.idea/libraries/IKAnalyzer6_5_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../springcloudproject/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../springcloudproject/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../springcloudproject/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../springcloudproject/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../springcloudproject/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../springcloudproject/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../springcloudproject/springcloudproject.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../sharesessionid/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../sharesessionid/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../shiro-project/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../shiro-project/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../shiro-project/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../shiro-project/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../springbootShiro" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../tensquare_parent/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../tensquare_parent/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../springboot-aop-project/src/main/java/com/atguigu/springbootaopproject/config/KaptchaConfiguration.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../springboot-aop-project/src/main/java/com/atguigu/springbootaopproject/controller/KaptchaController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../springboot-aop-project/src/main/resources/ehcache.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DataStructures/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../DataStructures/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SpringProject/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../SpringProject/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ik-analyzer" beforeDir="false" afterPath="$PROJECT_DIR$/../ik-analyzer" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../springboot-aop-project/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../springboot-aop-project/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../springboot-aop-project/src/main/java/com/atguigu/springbootaopproject/SpringbootAopProjectApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/../springboot-aop-project/src/main/java/com/atguigu/springbootaopproject/SpringbootAopProjectApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../springboot-aop-project/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../springboot-aop-project/src/main/resources/application.yml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -62,7 +54,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/resources/dbconfig.properties">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="100">
-              <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
+              <caret line="4" selection-start-line="4" selection-end-line="4" />
             </state>
           </provider>
         </entry>
@@ -198,10 +190,10 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1920" />
-    <option name="y" value="-4" />
-    <option name="width" value="1920" />
-    <option name="height" value="1084" />
+    <option name="x" value="1921" />
+    <option name="y" value="41" />
+    <option name="width" value="1918" />
+    <option name="height" value="1048" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -215,6 +207,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
@@ -375,12 +368,12 @@
       <workItem from="1563846954944" duration="22337000" />
       <workItem from="1564125835891" duration="693000" />
       <workItem from="1570929145264" duration="674000" />
-      <workItem from="1571112909375" duration="2889000" />
+      <workItem from="1571112909375" duration="3487000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="26593000" />
+    <option name="totallyTimeSpent" value="27191000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1920" y="-4" width="1920" height="1084" extended-state="6" />
@@ -599,7 +592,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/resources/dbconfig.properties">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="100">
-          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
+          <caret line="4" selection-start-line="4" selection-end-line="4" />
         </state>
       </provider>
     </entry>

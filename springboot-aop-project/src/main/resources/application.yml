@@ -7,10 +7,15 @@ spring:
     url: jdbc:mysql://localhost:3306/jdbc?useUnicode=true&characterEncoding=UTF-8
     username: ENC(o8xdYmzu2PcE0bSBE7hiVw==)
     password: ENC(nENx4748KIAFwti8e7SqUQ==)
+  cache:
+    type: ehcache
+    ehcache:
+      config: classpath:/ehcache.xml
 jasypt:
   encryptor:
     password: chenhua
     property:
       prefix: "ENC("
       suffix: ")"
+
 
